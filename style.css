@@ -70,3 +70,15 @@ body{
     display: block;
     text-align: center;
 }
+
+.singin {
+	position: relative;
+	left: 33%;
+	width: 66%;
+}
+
+.login {
+	position: relative;
+	left: 33%;
+	width: 66%;
+}
