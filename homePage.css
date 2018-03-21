@@ -1,0 +1,21 @@
+.content{	
+    /* background: rgba(255, 255, 255, 0.6); */
+    width: calc(80% - 2*30px);
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.content .object{
+	width: 28%;
+    margin: 40px 2%;
+}
+
+.label{
+    position: relative;
+    text-align: center;
+    top: 0;
+    right: 0;
+    padding: 8px 20px;
+    background: black;
+    color: white;
+}
