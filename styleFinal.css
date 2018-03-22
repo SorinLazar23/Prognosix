@@ -23,10 +23,9 @@ body{
 
 
 .meniu li {
-    /*float: right;*/
     position: relative;    
     display: inline-block;
-    width: 18%;
+    width: 17%;
     height: 40px;
     opacity: .8;
     line-height: 40px;
@@ -50,7 +49,6 @@ body{
 .meniu li a {
     display: block;
     color: white;
-/*    padding: 14px 16px;*/
     text-decoration: none;
 }
 
@@ -75,7 +73,7 @@ body{
 
 
 .content{
-    margin: 80px auto 0 auto;
+    margin: 115px auto 0 auto;
     width:50%;
 }
 

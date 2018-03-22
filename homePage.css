@@ -3,6 +3,7 @@
     width: calc(80% - 2*30px);
     padding: 30px;
     border-radius: 30px;
+
 }
 
 .content .object{
@@ -10,12 +11,44 @@
     margin: 40px 2%;
 }
 
-.label{
-    position: relative;
-    text-align: center;
-    top: 0;
-    right: 0;
-    padding: 8px 20px;
-    background: black;
-    color: white;
+
+.content-note{
+	margin: 115px auto 0 auto;
+    width:50%;
 }
+
+
+.meniu-note {
+    list-style: none;
+    margin-top: 100px;	
+    margin-bottom: -120px;
+    padding: 0;
+    text-align: center;
+}
+
+
+.meniu-note li {
+ 
+    position: relative;    
+    display: inline-block;
+    width: 10%;
+    height: 40px;
+    opacity: .8;
+    line-height: 40px;
+    text-align: center;
+    background-color: #333;
+    margin-right: 10px;
+  
+}
+
+.meniu-note li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.meniu-note li a:hover {
+    background-color: green;
+}
+
+
