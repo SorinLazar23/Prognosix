@@ -133,3 +133,16 @@ body{
 
 
 /*-------------------------- Register --------------------------*/
+/*-------------------------- Contact --------------------------*/
+.content-contact{
+    margin: 115px auto 0 auto;
+    width:40%;
+
+}
+#textarea{
+    
+    width: 100%;
+    color: #FFF;
+    background: transparent;
+    
+}
