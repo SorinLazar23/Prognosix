@@ -52,3 +52,27 @@
 }
 
 
+@media screen and (min-width: 380px) and (max-width: 530px){
+
+
+
+ .content .object {
+    width: 40%;
+    margin: 40px 2%;
+}
+
+
+}
+
+
+
+@media screen and (max-width: 379px) {
+
+
+    .content .object {
+    width: 88%;
+    margin: 10px 2%;
+
+
+
+}
