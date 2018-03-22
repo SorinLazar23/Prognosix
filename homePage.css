@@ -8,7 +8,7 @@
 
 .content .object{
 	width: 28%;
-    margin: 40px 2%;
+    margin: 40px 2.3%;
 }
 
 
@@ -31,7 +31,7 @@
  
     position: relative;    
     display: inline-block;
-    width: 10%;
+    width: 30%;
     height: 40px;
     opacity: .8;
     line-height: 40px;
@@ -51,20 +51,17 @@
     background-color: green;
 }
 
+/*-------------------------- Media Queries --------------------------*/
 
 @media screen and (min-width: 380px) and (max-width: 530px){
 
 
-
  .content .object {
     width: 40%;
-    margin: 40px 2%;
+    margin: 40px 2.3%;
 }
 
-
 }
-
-
 
 @media screen and (max-width: 379px) {
 
@@ -74,5 +71,28 @@
     margin: 10px 2%;
 
 
-
 }
+
+@media screen and (max-width: 500px){
+
+    .content-note{
+        margin: 50px auto 0 auto;
+        width: auto;
+    }
+
+    .meniu-note li {
+ 
+    position: relative;    
+    display: block;
+    width: 100%;
+    height: 40px;
+    opacity: .8;
+    line-height: 40px;
+    text-align: center;
+    background-color: #333;
+    margin-right: 10px;
+    margin-bottom:3px;
+  
+}
+}
+/*-------------------------- Media Queries --------------------------*/
