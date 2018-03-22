@@ -72,19 +72,19 @@ body{
 
 /*-------------------------- Register --------------------------*/
 
-.inregistrare {
-	width:50%;
-	float:middle;
-	margin-left: 25%;
-	/*margin-top: 100px;*/
-}
+
 
 .content{
     margin: 80px auto 0 auto;
+    width:50%;
 }
 
 .content.no-margin{
     margin: 40px auto 0 auto;
+}
+
+.content.silver{
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .formular .legend-top{
@@ -132,7 +132,6 @@ body{
 
 }
 
-.content.silver{
-    background: rgba(255, 255, 255, 0.6);
-}
+
+
 /*-------------------------- Register --------------------------*/
