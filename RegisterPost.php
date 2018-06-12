@@ -51,12 +51,22 @@ function SaveToDatabase($formvars){
     	die("Connection failed: " . $conn->connect_error);
 	} 
 
-	if ($conn->query(sprintf("INSERT INTO users(name, password, email, type) 
-		values ('%s','%s','%s','%d')",$_POST["nume"]." ".$_POST["prenume"],md5($_POST["parola"]),$_POST["e-mail"],1)) === TRUE) {
-    	
-    	session_start();
+	if ($conn->query(sprintf('INSERT INTO users(name, password, email, type) 
+		values ("%s","%s","%s",%d)',$_POST["nume"]." ".$_POST["prenume"],md5($_POST["parola"]),$_POST["e-mail"],1)) === TRUE) {
 	}
 
-header ("Location:indexFinal.html");
+	// preiau id-ul user-ului inserat mai sus.
+	if($result = $conn->query(sprintf('SELECT * FROM users WHERE id = %d', $conn->insert_id))){
+        if($result->num_rows > 0){
+            if($row = $result->fetch_assoc()) {
+                session_start();
+                // salvez in sesiune user-ul care s-a inregistrat
+                $_SESSION['user'] = $row;
+                header ("Location:indexFinal.php");
+            }
+        }
+    }
+
+    $conn->close();
 }
 

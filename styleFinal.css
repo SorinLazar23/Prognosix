@@ -54,7 +54,7 @@ body{
 
 
 
-.meniu li a:hover {
+.meniu li a:hover{
     background-color: green;
 }
 
@@ -64,6 +64,18 @@ body{
 
 .meniu li:hover ul li{
 	display: block;
+}
+
+.meniu-note label{
+    display: block;
+}
+
+.meniu-note label.active{
+    background-color: green;
+}
+
+.content-note input[name="round"]{
+    display: none;
 }
 
 /*-------------------------- Meniul --------------------------*/
