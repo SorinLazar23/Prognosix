@@ -13,44 +13,39 @@
 <body>
 
 <!--  Meniu  -->
-  <ul class = "meniu">
-    <li><a href="http://localhost/Prognosix/indexFinal.html">Home</a></li>
+
+<ul class = "meniu">
+    <li><a href="http://localhost/Prognosix/indexFinal.php">Home</a></li>
 
     <li><a href="#news">News</a></li>
 
-    <li id="meniu-ascuns-sub-500"><a href="#contact">Contact</a>
-      <ul>
-        <li><a href="http://localhost/Prognosix/contactFinal.html">Laurentiu Cozma</a></li>
-            <li><a href="http://localhost/Prognosix/contactFinal.html">Sorin Lazar</a></li>
-      </ul>
-    </li> 
-
-    <li id="meniu-ascuns-sub-500"><a href="#about">About</a>
+    <li class="meniu-ascuns-sub-500"><a href="#contact">Contact</a>
         <ul>
-          <li><a href="http://localhost/Prognosix/team.html">Our team</a></li>
-          <li><a href="http://localhost/Prognosix/prognosix.html">ProGnosix</a></li>
+            <li><a href="http://localhost/Prognosix/contactFinal.php">Laurentiu Cozma</a></li>
+            <li><a href="http://localhost/Prognosix/contactFinal.php">Sorin Lazar</a></li>
         </ul>
-      </li>
+    </li>
 
-      <li id="meniu-ascuns-peste-500"><a href="http://localhost/Prognosix/team.html">Our team</a></li>
-      <li id="meniu-ascuns-peste-500"><a href="http://localhost/Prognosix/prognosix.html">ProGnosix</a></li>
-        
+    <li class="meniu-ascuns-sub-500"><a href="#about">About</a>
+        <ul>
+            <li><a href="http://localhost/Prognosix/team.php">Our team</a></li>
+            <li><a href="http://localhost/Prognosix/prognosix.php">ProGnosix</a></li>
+        </ul>
+    </li>
 
-      <?php if(isset($_SESSION['user'])){ ?>
-        <li id="meniu-ascuns-sub-500"><a href="#">Logout</a></li>
+    <?php if(isset($_SESSION['user'])){ ?>
+        <li class="meniu-ascuns-sub-500"><a href="http://localhost/Prognosix/logout.php">Logout</a></li>
     <?php }else{ ?>
-    <li id="meniu-ascuns-sub-500"><a href="#User">User</a>
+    <li class="meniu-ascuns-sub-500"><a href="#User">User</a>
         <ul>
             <li><a href="http://localhost/Prognosix/loginFinal.php">Login</a></li>
             <li><a href="http://localhost/Prognosix/registerFinal.php">Register</a></li>
         </ul>
     </li>
     <?php } ?>
+</ul>
 
-    <li id="meniu-ascuns-peste-500"><a href="http://localhost/Prognosix/loginFinal.html">Login</a></li>
-    <li id="meniu-ascuns-peste-500"><a href="http://localhost/Prognosix/registerFinal.html">Register</a></li>
-  </ul>
-	
+
 
 <!--  Meniu  -->
 

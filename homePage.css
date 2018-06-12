@@ -65,34 +65,34 @@
 
 @media screen and (max-width: 379px) {
 
-
     .content .object {
-    width: 88%;
-    margin: 10px 2%;
+        width: 88%;
+        margin: 10px 2%;
 
-
+    }
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 500px) {
 
-    .content-note{
+    .content-note {
         margin: 50px auto 0 auto;
         width: auto;
     }
 
     .meniu-note li {
- 
-    position: relative;    
-    display: block;
-    width: 100%;
-    height: 40px;
-    opacity: .8;
-    line-height: 40px;
-    text-align: center;
-    background-color: #333;
-    margin-right: 10px;
-    margin-bottom:3px;
-  
+
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 40px;
+        opacity: .8;
+        line-height: 40px;
+        text-align: center;
+        background-color: #333;
+        margin-right: 10px;
+        margin-bottom: 3px;
+
+    }
 }
-}
+
 /*-------------------------- Media Queries --------------------------*/
