@@ -1,6 +1,45 @@
 <?php
+
 session_start();
+
+$conn = new mysqli("localhost", "root", "","Prognosix");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$probes = [];
+
+if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_id=%d', intval($_GET["id"])))) {
+    if ($result->num_rows > 0) {
+        if($row = $result->fetch_assoc()) {
+
+            $pathinfo = pathinfo($row['url']);
+
+            $id = '';
+            $name = '';
+            if($pathinfo['extension'] === 'csv'){
+                $fd = fopen($row['url'], 'r');
+                $header = fgets($fd);
+                $header = explode(',', $header);
+                unset($header[0]);
+                foreach($header as $probe){
+                    $id = rtrim(trim($probe), '*');
+
+                    $probes[] = [
+                        'id' => $id,
+                        'name' => $id
+                    ];
+                }
+            }
+        }
+    }
+}
+
+$conn->close();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +49,8 @@ session_start();
     <title>ProGnosix</title>
     <link href="styleFinal.css" rel="stylesheet" type="text/css">
     <link href="homePage.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
 <!--  Meniu  -->
@@ -52,20 +93,22 @@ session_start();
   <!--  Acordare nota  -->
   <div>
       <ul class = "meniu-note content">
-
-          <li><a href="#news">Examen</a></li>
-          <li><a href="#news">Proiect</a></li>
-          <li><a href="#news">Laborator</a></li>
-
+          <?php foreach($probes as $probe){ ?>
+            <li><a href="#"><label for="radio-<?php echo $probe['id']; ?>"><?php echo $probe['name']; ?></label></a></li>
+          <?php } ?>
       </ul>
   </div>
 
 	<div class="content-note">
-		<form action="#" method="post" class="formular">
+		<form action="calculatePost.php" method="post" class="formular">
         <fieldset class="fieldset">
           <legend class="legend-top"><h2>Acorda o nota</h2></legend>
+            <input type="hidden" value="<?php echo $row['id']; ?>" name="grade_file_id" />
+            <?php foreach($probes as $probe){ ?>
+                <input type="radio" name="runda" value="<?php echo $probe['id']; ?>" id="radio-<?php echo $probe['id']; ?>"/>
+            <?php } ?>
           <p>
-            <input type="text" name="notaExamen" id="nota-examen" placeholder="Nota la examenul final" />
+            <input type="text" name="notaExamen" id="nota-examen" placeholder="Nota ta" />
           </p>
 
           <p class="button-wrapper">
