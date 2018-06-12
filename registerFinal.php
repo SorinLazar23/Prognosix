@@ -7,7 +7,8 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>ProGnosix</title>
     <link href="styleFinal.css" rel="stylesheet" type="text/css">
-    
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
 

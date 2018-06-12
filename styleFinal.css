@@ -74,7 +74,7 @@ body{
     background-color: green;
 }
 
-.content-note input[name="round"]{
+.content-note input[name="runda"]{
     display: none;
 }
 
@@ -167,7 +167,7 @@ body{
 /*-------------------------- Media Queries --------------------------*/
 @media screen and (max-width: 500px){
     
-    li#meniu-ascuns-sub-500{
+    li.meniu-ascuns-sub-500{
         display: none;
     }
 
@@ -199,7 +199,7 @@ body{
 
 @media screen and (min-width: 500px) {
     
-    li#meniu-ascuns-peste-500{
+    li.meniu-ascuns-peste-500{
         display: none;
     }
 

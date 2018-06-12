@@ -8,6 +8,8 @@
     <title>ProGnosix</title>
     <link href="styleFinal.css" rel="stylesheet" type="text/css">
     <link href="homePage.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
 
