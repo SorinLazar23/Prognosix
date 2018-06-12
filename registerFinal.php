@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,12 +35,16 @@
       <li id="meniu-ascuns-peste-500"><a href="http://localhost/Prognosix/prognosix.html">ProGnosix</a></li>
         
 
-      <li id="meniu-ascuns-sub-500"><a href="#User">User</a>
-      <ul>
-        <li><a href="http://localhost/Prognosix/loginFinal.html">Login</a></li>
-        <li><a href="http://localhost/Prognosix/registerFinal.html">Register</a></li>
-      </ul>
-    </li>
+      <?php if(isset($_SESSION['user'])){ ?>
+  <li id="meniu-ascuns-sub-500"><a href="#">Logout</a></li>
+  <?php }else{ ?>
+  <li id="meniu-ascuns-sub-500"><a href="#User">User</a>
+    <ul>
+      <li><a href="http://localhost/Prognosix/loginFinal.php">Login</a></li>
+      <li><a href="http://localhost/Prognosix/registerFinal.php">Register</a></li>
+    </ul>
+  </li>
+  <?php } ?>
 
     <li id="meniu-ascuns-peste-500"><a href="http://localhost/Prognosix/loginFinal.html">Login</a></li>
     <li id="meniu-ascuns-peste-500"><a href="http://localhost/Prognosix/registerFinal.html">Register</a></li>
