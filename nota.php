@@ -56,6 +56,22 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
                         break;
                     }
                 }
+            }else if($pathinfo['extension'] === 'xml'){
+                $students = json_decode(json_encode(simplexml_load_file($row['url'])), true);
+
+                foreach($students as $student){
+                    if($student['nume_prenume'] === $_SESSION['user']['name']){
+                        foreach($student['note'] as $key => $proba){
+                            if(!in_array($key, $usedProbes)){
+                                $probes[] = [
+                                    'id' => $key,
+                                    'name' => $proba['denumire']
+                                ];
+                            }
+                        }
+                        break;
+                    }
+                }
             }
         }
     }

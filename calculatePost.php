@@ -109,6 +109,32 @@ function LoadFromDatabase(){
                             header('Location: indexFinal.php');
                         }
                     }
+                }else if($pathinfo['extension'] === 'xml'){
+
+                    $students = json_decode(json_encode(simplexml_load_file($row['url'])), true);
+
+                    foreach($students as $student){
+                        if($student['nume_prenume'] === $_SESSION['user']['name']){
+                            foreach($student['note'] as $key => $proba){
+                                if($key === $_POST['runda']){
+                                    $nota = $proba['nota'];
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!empty($nota) && $nota == $_POST['nota']) {
+
+                        if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%f)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota + floatval($row['punctaj_p'])))) {
+                            header('Location: indexFinal.php');
+                        }
+                    } else {
+
+                        if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%f)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota - floatval($row['punctaj_m'])))) {
+                            header('Location: indexFinal.php');
+                        }
+                    }
                 }
             }
         }
