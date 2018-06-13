@@ -19,7 +19,7 @@
 <ul class = "meniu">
     <li><a href="http://localhost/Prognosix/indexFinal.php">Home</a></li>
 
-    <li><a href="#news">News</a></li>
+    <li><a rel="alternate" href="http://localhost/Prognosix/newsFinal.php" title="My RSS feed" type="application/rss+xml">News</a></li>
 
     <!--<li class="meniu-ascuns-sub-500"><a href="#contact">Contact</a>
         <ul>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rss version="2.0">
+    <channel>
+        <title>My RSS feed</title>
+        <link>http://localhost/Prognosix/</link>
+        <description>This is an RSS feed</description>
+        <language>en-us</language>
+        <copyright>Copyright (C) 2018 Prognosix</copyright>
+        <item>
+            <title>Titlte</title>
+            <description>Description</description>
+            <link>http://localhost/Prognosix/indexFinal.php</link>
+            <pubDate>Wed, 05 Jan 2009 15:57:20 +0000</pubDate>
+        </item>
+    <item><title>Tocmai s-au uploadat notele pentru obiectul</title><description>A fost uploadat fiserul cu note pentru materia . Fiecare student care are aceasta materie poate acum sa isi "ghiceasca nota" accesand acest &lt;a href="http://localhost/Prognosix/indexFinal.php"&gt;link&lt;/a&gt;</description><link>http://localhost/Prognosix/indexFinal.php</link><pubDate>Wed, 13 Jun 2018 20:24:56 +0200</pubDate></item></channel>
+</rss>

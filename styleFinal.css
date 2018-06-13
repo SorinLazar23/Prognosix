@@ -143,7 +143,21 @@ body{
 
 }
 
+.getRawRss{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
 
+.getRawRss:hover{
+    color: silver;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.newsfeed{
+    color: white;
+}
 
 /*-------------------------- Register --------------------------*/
 

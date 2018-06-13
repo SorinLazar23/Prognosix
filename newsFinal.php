@@ -7,18 +7,21 @@
     <title>ProGnosix</title>
     <link href="styleFinal.css" rel="stylesheet" type="text/css">
     <link href="homePage.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
 </head>
-<body>
 
+<body>
 <!--  Meniu  -->
+
 <ul class = "meniu">
     <li><a href="http://localhost/Prognosix/indexFinal.php">Home</a></li>
 
     <li><a rel="alternate" href="http://localhost/Prognosix/newsFinal.php" title="My RSS feed" type="application/rss+xml">News</a></li>
 
     <!--<li class="meniu-ascuns-sub-500"><a href="#contact">Contact</a>
-        <ul>
-            <li><a href="http://localhost/Prognosix/contactFinal.php">Laurentiu Cozma</a></li>
+         <ul>
+            <li><a href="http://localhosNt/Prognosix/contactFinal.php">Laurentiu Cozma</a></li>
             <li><a href="http://localhost/Prognosix/contactFinal.php">Sorin Lazar</a></li>
         </ul>
     </li>-->
@@ -29,7 +32,6 @@
             <li><a href="http://localhost/Prognosix/prognosix.php">ProGnosix</a></li>
         </ul>
     </li>
-
 
     <?php if(isset($_SESSION['user'])){ ?>
         <li class="meniu-ascuns-sub-500"><a href="http://localhost/Prognosix/logout.php">Logout</a></li>
@@ -44,19 +46,15 @@
 </ul>
 
 
+
 <!--  Meniu  -->
 
-<!--  Content  -->
+<div class="content silver no-margin">
+    <div class="newsfeed">
 
-
-	<div class="content silver evaluare-nota">
-		<h4> Ups!... Din pacate nu te-ai autoevaluat bine!</h4>
-		<h4> Nota ta la exemen este: 10 cu felicitari!</h4>
-		<h4> Nota introdusa de tine: 4 </h4>
-		<h4> Nota ta va fi scazuta cu M punte :( </h4>
     </div>
-
-
-<!--  Content  -->
+    <button type="button" class="refreshNews">Refresh News</button>
+    <a href="http://localhost/Prognosix/newsPost.php" target="_blank" class="getRawRss">Get raw rss</a>
+</div>
 </body>
 </html>
