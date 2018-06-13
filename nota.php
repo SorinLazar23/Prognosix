@@ -14,7 +14,7 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
     if ($result->num_rows > 0) {
         if($row = $result->fetch_assoc()) {
 
-            $result2 = $conn->query(sprintf('SELECT * from grades WHERE user_id = %d', intval($_SESSION['user']['id'])));
+            $result2 = $conn->query(sprintf('SELECT * from grades WHERE user_id = %d AND discipline_id = %d', intval($_SESSION['user']['id']), intval($_GET['id'])));
 
             $usedProbes = [];
             if($result2->num_rows > 0){
@@ -25,8 +25,6 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
 
             $pathinfo = pathinfo($row['url']);
 
-            $id = '';
-            $name = '';
             if($pathinfo['extension'] === 'csv'){
                 $fd = fopen($row['url'], 'r');
                 $header = fgets($fd);
@@ -40,6 +38,22 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
                             'id' => $id,
                             'name' => $id
                         ];
+                    }
+                }
+            }else if($pathinfo['extension'] === 'json'){
+                $students = json_decode(file_get_contents($row['url']), true);
+
+                foreach($students as $student){
+                    if($student['nume_prenume'] === $_SESSION['user']['name']){
+                        foreach($student['note'] as $key => $proba){
+                            if(!in_array($key, $usedProbes)){
+                                $probes[] = [
+                                    'id' => $key,
+                                    'name' => $proba['denumire']
+                                ];
+                            }
+                        }
+                        break;
                     }
                 }
             }

@@ -73,14 +73,40 @@ function LoadFromDatabase(){
 
                         if (!empty($nota) && $nota == $_POST['nota']) {
 
-                            if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%d)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota + floatval($row['punctaj_p'])))) {
-                                header('Location: notaIsOk.php');
+                            if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%f)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota + floatval($row['punctaj_p'])))) {
+                                header('Location: indexFinal.php');
                             }
                         } else {
 
-                            if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%d)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota - floatval($row['punctaj_m'])))) {
-                                header('Location: notaNotOk.php');
+                            if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%f)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota - floatval($row['punctaj_m'])))) {
+                                header('Location: indexFinal.php');
                             }
+                        }
+                    }
+                }else if($pathinfo['extension'] === 'json'){
+
+                    $students = json_decode(file_get_contents($row['url']), true);
+
+                    foreach($students as $student){
+                        if($student['nume_prenume'] === $_SESSION['user']['name']){
+                            foreach($student['note'] as $key => $proba){
+                                if($key === $_POST['runda']){
+                                    $nota = $proba['nota'];
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!empty($nota) && $nota == $_POST['nota']) {
+
+                        if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%f)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota + floatval($row['punctaj_p'])))) {
+                            header('Location: indexFinal.php');
+                        }
+                    } else {
+
+                        if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%f)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota - floatval($row['punctaj_m'])))) {
+                            header('Location: indexFinal.php');
                         }
                     }
                 }
