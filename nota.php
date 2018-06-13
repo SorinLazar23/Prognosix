@@ -14,6 +14,15 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
     if ($result->num_rows > 0) {
         if($row = $result->fetch_assoc()) {
 
+            $result2 = $conn->query(sprintf('SELECT * from grades WHERE user_id = %d', intval($_SESSION['user']['id'])));
+
+            $usedProbes = [];
+            if($result2->num_rows > 0){
+                while($row2 = $result2->fetch_assoc()){
+                    $usedProbes[] = $row2['round'];
+                }
+            }
+
             $pathinfo = pathinfo($row['url']);
 
             $id = '';
@@ -26,10 +35,12 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
                 foreach($header as $probe){
                     $id = rtrim(trim($probe), '*');
 
-                    $probes[] = [
-                        'id' => $id,
-                        'name' => $id
-                    ];
+                    if(!in_array($id, $usedProbes)){
+                        $probes[] = [
+                            'id' => $id,
+                            'name' => $id
+                        ];
+                    }
                 }
             }
         }
@@ -90,34 +101,39 @@ $conn->close();
 
 <!--  Meniu  -->
 
-  <!--  Acordare nota  -->
-  <div>
-      <ul class = "meniu-note content">
-          <?php foreach($probes as $probe){ ?>
-            <li><a href="#"><label for="radio-<?php echo $probe['id']; ?>"><?php echo $probe['name']; ?></label></a></li>
-          <?php } ?>
-      </ul>
-  </div>
+    <?php if(!empty($probes)){ ?>
+      <!--  Acordare nota  -->
+      <div>
+          <ul class = "meniu-note content">
+              <?php foreach($probes as $probe){ ?>
+                <li><a href="#"><label for="radio-<?php echo $probe['id']; ?>"><?php echo $probe['name']; ?></label></a></li>
+              <?php } ?>
+          </ul>
+      </div>
+        <div class="content-note">
+            <form action="calculatePost.php" method="post" class="formular">
+            <fieldset class="fieldset">
+              <legend class="legend-top"><h2>Acorda o nota</h2></legend>
+                <input type="hidden" value="<?php echo $row['id']; ?>" name="grade_file_id" />
+                <?php foreach($probes as $probe){ ?>
+                    <input type="radio" name="runda" value="<?php echo $probe['id']; ?>" id="radio-<?php echo $probe['id']; ?>"/>
+                <?php } ?>
+              <p>
+                <input type="text" name="nota" id="nota-examen" placeholder="Nota ta" />
+              </p>
 
-	<div class="content-note">
-		<form action="calculatePost.php" method="post" class="formular">
-        <fieldset class="fieldset">
-          <legend class="legend-top"><h2>Acorda o nota</h2></legend>
-            <input type="hidden" value="<?php echo $row['id']; ?>" name="grade_file_id" />
-            <?php foreach($probes as $probe){ ?>
-                <input type="radio" name="runda" value="<?php echo $probe['id']; ?>" id="radio-<?php echo $probe['id']; ?>"/>
-            <?php } ?>
-          <p>
-            <input type="text" name="nota" id="nota-examen" placeholder="Nota ta" />
-          </p>
-
-          <p class="button-wrapper">
-            <input type="submit" name="calculare" id="calculare" class="buton-formular" value="Calculare" />
-            <input type="reset" name="reset" id="reset" class="buton-formular" value="Resetare" />
-          </p>
-        </fieldset>
-      </form>
-	</div>
-  <!--  Acordare nota  -->
+              <p class="button-wrapper">
+                <input type="submit" name="calculare" id="calculare" class="buton-formular" value="Calculare" />
+                <input type="reset" name="reset" id="reset" class="buton-formular" value="Resetare" />
+              </p>
+            </fieldset>
+          </form>
+        </div>
+      <!--  Acordare nota  -->
+    <?php }else{ ?>
+        <div class="content-note">
+            <p class="mesaj">Nu mai sunt probe la care poti sa ghicesti nota.</p>
+        </div>
+    <?php } ?>
 </body>
 </html>

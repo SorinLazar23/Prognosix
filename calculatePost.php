@@ -49,8 +49,6 @@ function LoadFromDatabase(){
 
                 $pathinfo = pathinfo($row['url']);
 
-                $id = '';
-                $name = '';
                 if($pathinfo['extension'] === 'csv'){
                     $fd = fopen($row['url'], 'r');
                     $header = fgets($fd);
@@ -80,8 +78,8 @@ function LoadFromDatabase(){
                             }
                         } else {
 
-                            if ($conn->query(sprintf("INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,%s,%d)", intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota - floatval($row['punctaj_m'])))) {
-                                header('Location: notaIsNotOk.php');
+                            if ($conn->query(sprintf('INSERT INTO grades (user_id,discipline_id,round,grade) VALUES(%d,%d,"%s",%d)', intval($_SESSION['user']['id']), intval($row['discipline_id']),$_POST['runda'], $nota - floatval($row['punctaj_m'])))) {
+                                header('Location: notaNotOk.php');
                             }
                         }
                     }
