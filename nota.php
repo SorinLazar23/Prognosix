@@ -101,12 +101,12 @@ $conn->close();
 
     <li><a href="#news">News</a></li>
 
-    <li class="meniu-ascuns-sub-500"><a href="#contact">Contact</a>
+    <!--<li class="meniu-ascuns-sub-500"><a href="#contact">Contact</a>
         <ul>
             <li><a href="http://localhost/Prognosix/contactFinal.php">Laurentiu Cozma</a></li>
             <li><a href="http://localhost/Prognosix/contactFinal.php">Sorin Lazar</a></li>
         </ul>
-    </li>
+    </li>-->
 
     <li class="meniu-ascuns-sub-500"><a href="#about">About</a>
         <ul>
