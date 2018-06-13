@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<students>
+	<student>
+		<nume_prenume>Laurentiu Cozma</nume_prenume>
+		<note>
+			<laborator1>
+				<denmire>Laborator - prima parte</denmire>
+				<nota>6</nota>
+				<obligatoriu>true</obligatoriu>
+			</laborator1>
+			<laborator2>
+				<denmire>Laborator - a doua parte</denmire>
+				<nota>7</nota>
+				<obligatoriu>true</obligatoriu>
+			</laborator2>
+			<sesiune>
+				<denmire>Sesiune</denmire>
+				<nota>5</nota>
+				<obligatoriu>false</obligatoriu>
+			</sesiune>
+		</note>
+	</student>
+	<student>
+		<nume_prenume>Sorin Lazar</nume_prenume>
+		<note>
+			<laborator1>
+				<denmire>Laborator - prima parte</denmire>
+				<nota>7</nota>
+				<obligatoriu>true</obligatoriu>
+			</laborator1>
+			<laborator2>
+				<denmire>Laborator - a doua parte</denmire>
+				<nota>6</nota>
+				<obligatoriu>true</obligatoriu>
+			</laborator2>
+			<sesiune>
+				<denmire>Sesiune</denmire>
+				<nota>5</nota>
+				<obligatoriu>false</obligatoriu>
+			</sesiune>
+		</note>
+	</student>
+</students>

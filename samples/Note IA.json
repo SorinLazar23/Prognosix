@@ -1,0 +1,42 @@
+[
+	{
+		"nume_prenume": "Laurentiu Cozma",
+		"note": {
+			"laborator1": {
+				"denumire": "Laborator - prima parte",
+				"nota": 6,
+				"obligatoriu": true
+			},
+			"laborator2": {
+				"denumire": "Laborator - a doua parte",
+				"nota": 7,
+				"obligatoriu": false
+			},
+			"sesiune": {
+				"denumire": "Sesiune",
+				"nota": 8,
+				"obligatoriu": true
+			}
+		}
+	},
+	{
+		"nume_prenume": "Sorin Lazar",
+		"note": {
+			"laborator1": {
+				"denumire": "Laborator - prima parte",
+				"nota": 7,
+				"obligatoriu": true
+			},
+			"laborator2": {
+				"denumire": "Laborator - a doua parte",
+				"nota": 6,
+				"obligatoriu": false
+			},
+			"sesiune": {
+				"denumire": "Sesiune",
+				"nota": 8,
+				"obligatoriu": true
+			}
+		}
+	}
+]
