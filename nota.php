@@ -9,6 +9,8 @@ if ($conn->connect_error) {
 }
 
 $probes = [];
+$requiredProbes = [];
+$showGrades = true;
 
 if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_id=%d', intval($_GET["id"])))) {
     if ($result->num_rows > 0) {
@@ -31,7 +33,13 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
                 $header = explode(',', $header);
                 unset($header[0]);
                 foreach($header as $probe){
+                    $isProbeRequired = strpos($probe, '*', -1) !== false ? true : false;
+
                     $id = rtrim(trim($probe), '*');
+
+                    if($isProbeRequired){
+                        $requiredProbes[] = $id;
+                    }
 
                     if(!in_array($id, $usedProbes)){
                         $probes[] = [
@@ -40,12 +48,25 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
                         ];
                     }
                 }
+
+                foreach($requiredProbes as $probe){
+                    if(!in_array($probe, $usedProbes)){
+                        $showGrades = false;
+                    }
+                }
             }else if($pathinfo['extension'] === 'json'){
                 $students = json_decode(file_get_contents($row['url']), true);
 
                 foreach($students as $student){
                     if($student['nume_prenume'] === $_SESSION['user']['name']){
                         foreach($student['note'] as $key => $proba){
+
+                            $isProbeRequired = $proba['obligatoriu'];
+
+                            if($isProbeRequired){
+                                $requiredProbes[] = $key;
+                            }
+
                             if(!in_array($key, $usedProbes)){
                                 $probes[] = [
                                     'id' => $key,
@@ -54,6 +75,12 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
                             }
                         }
                         break;
+                    }
+                }
+
+                foreach($requiredProbes as $probe){
+                    if(!in_array($probe, $usedProbes)){
+                        $showGrades = false;
                     }
                 }
             }else if($pathinfo['extension'] === 'xml'){
@@ -62,6 +89,13 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
                 foreach($students as $student){
                     if($student['nume_prenume'] === $_SESSION['user']['name']){
                         foreach($student['note'] as $key => $proba){
+
+                            $isProbeRequired = $proba['obligatoriu'] === "true" ? true : false;
+
+                            if($isProbeRequired){
+                                $requiredProbes[] = $key;
+                            }
+
                             if(!in_array($key, $usedProbes)){
                                 $probes[] = [
                                     'id' => $key,
@@ -72,12 +106,16 @@ if ($result = $conn->query(sprintf('SELECT * from  grade_files WHERE discipline_
                         break;
                     }
                 }
+
+                foreach($requiredProbes as $probe){
+                    if(!in_array($probe, $usedProbes)){
+                        $showGrades = false;
+                    }
+                }
             }
         }
     }
 }
-
-$conn->close();
 
 ?>
 
@@ -107,6 +145,15 @@ $conn->close();
             <li><a href="http://localhost/Prognosix/contactFinal.php">Sorin Lazar</a></li>
         </ul>
     </li>-->
+
+    <?php if($showGrades){ ?>
+        <li class="meniu-ascuns-sub-500"><a href="#contact">Notele mele</a>
+            <ul>
+                <li><a href="http://localhost/Prognosix/exportCSV.php?id=<?php echo $_GET['id']; ?>">CSV</a></li>
+                <li><a href="http://localhost/Prognosix/exportPDF.php?id=<?php echo $_GET['id']; ?>">PDF</a></li>
+            </ul>
+        </li>
+    <?php } ?>
 
     <li class="meniu-ascuns-sub-500"><a href="#about">About</a>
         <ul>
@@ -167,3 +214,9 @@ $conn->close();
     <?php } ?>
 </body>
 </html>
+
+<?php
+
+$conn->close();
+
+?>
