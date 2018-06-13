@@ -108,11 +108,11 @@ $conn->close();
                 <input type="radio" name="runda" value="<?php echo $probe['id']; ?>" id="radio-<?php echo $probe['id']; ?>"/>
             <?php } ?>
           <p>
-            <input type="text" name="notaExamen" id="nota-examen" placeholder="Nota ta" />
+            <input type="text" name="nota" id="nota-examen" placeholder="Nota ta" />
           </p>
 
           <p class="button-wrapper">
-            <input type="submit" name="inregistrare" id="inregistrare" class="buton-formular" value="Calculare" />
+            <input type="submit" name="calculare" id="calculare" class="buton-formular" value="Calculare" />
             <input type="reset" name="reset" id="reset" class="buton-formular" value="Resetare" />
           </p>
         </fieldset>
