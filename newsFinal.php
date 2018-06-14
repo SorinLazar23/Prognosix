@@ -60,7 +60,7 @@ session_start();
 
     </div>
     <button type="button" class="refreshNews">Refresh News</button>
-    <a href="http://localhost/Prognosix/newsPost.php" target="_blank" class="getRawRss">Get raw rss</a>
+    <a href="http://localhost/Prognosix/feed.xml" target="_blank" class="getRawRss">Get raw rss</a>
 </div>
 </body>
 </html>
